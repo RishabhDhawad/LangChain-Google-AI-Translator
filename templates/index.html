@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain Google AI Translator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>LangChain Google AI Translator</h1>
+        <form id="translation-form">
+            <textarea id="text-input" placeholder="Enter text to translate..." required></textarea>
+            <select id="target-language">
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Japanese">Japanese</option>
+            </select>
+            <button type="submit">Translate</button>
+        </form>
+        <hr>
+        <h3>Result:</h3>
+        <p id="result-text"></p>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
