@@ -1,0 +1,12 @@
+# netlify.toml
+[build]
+  # The directory where our serverless function code lives
+  functions = "api/"
+
+# This rule rewrites all incoming requests to our serverless function.
+# It's how we make our Python backend handle every page view.
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/main"
+  status = 200
+  
