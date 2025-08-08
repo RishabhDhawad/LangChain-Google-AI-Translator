@@ -1,0 +1,59 @@
+# Python virtual environments
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# VSCode / IDE settings
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variable files (API keys, etc.)
+.env
+.env.*
+
+# FastAPI logs / temp files
+*.log
+
+# Pytest / coverage
+.cache/
+*.cover
+coverage.*
+htmlcov/
+pytest_cache/
+
+# Migrations (if using alembic)
+migrations/
+
+# LangChain / OpenAI / Google AI Studio cache (if any)
+langchain.db
+*.jsonl  # if you're storing chains or runs
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints
+
+# Frontend build files (if using React/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Output / temp data
+*.sqlite3
+*.db
+*.pkl
+*.joblib
+*.bak
+
+# Compiled C files
+*.so
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
