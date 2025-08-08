@@ -9,7 +9,7 @@ def process_query(request: QueryRequest) -> MultiLangResponse:
     original_text = get_google_response(request.query)
     translations = {}
     
-    for lang in request.language:
+    for lang in request.target_languages:
         try:
             translated = translate_text(original_text, lang)
             translations[lang] = translated

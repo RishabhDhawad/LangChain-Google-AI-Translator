@@ -13,6 +13,7 @@ const QueryForm = ({ onResult }) => {
   const [query, setQuery] = useState("");
   const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleLangChange = (e) => {
     const { value, checked } = e.target;
@@ -22,47 +23,77 @@ const QueryForm = ({ onResult }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!query || languages.length === 0) return alert("Fill all fields");
+    setError("");
+    if (!query.trim()) {
+      setError("Please enter a question.");
+      return;
+    }
+    if (languages.length === 0) {
+      setError("Please select at least one target language.");
+      return;
+    }
 
     try {
       setLoading(true);
-      const response = await axios
-        .post("http://localhost:8000/api/v1/process", {
-          query: input,
-          target_languages: selectedLanguages,
-        })
-        .then((res) => setTranslations(res.data.translations))
-        .catch((err) => console.error(err));
-
+      const response = await axios.post("http://localhost:8000/api/v1/process", {
+        query,
+        target_languages: languages,
+      });
       onResult(response.data);
     } catch (err) {
       console.error("API Error:", err);
-      alert("Something went wrong.");
+      setError("Something went wrong while processing your request.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Ask a Question</h2>
-      <textarea
-        rows={4}
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Type your question here"
-      />
-      <h3>Select Languages:</h3>
-      {languageOptions.map(({ code, label }) => (
-        <label key={code}>
-          <input type="checkbox" value={code} onChange={handleLangChange} />
-          {label}
-        </label>
-      ))}
-      <br />
-      <button type="submit" disabled={loading}>
-        {loading ? "Processing..." : "Submit"}
-      </button>
+    <form onSubmit={handleSubmit} className="form">
+      <h2 className="section-title">Ask a Question</h2>
+
+      <div className="form-group">
+        <label htmlFor="question" className="label">Your question</label>
+        <textarea
+          id="question"
+          className="textarea"
+          rows={5}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Type your question here"
+          disabled={loading}
+        />
+      </div>
+
+      <div className="form-group">
+        <span className="label">Target languages</span>
+        <div className="checkbox-grid">
+          {languageOptions.map(({ code, label }) => {
+            const checked = languages.includes(code);
+            return (
+              <label key={code} className={`checkbox-pill ${checked ? "checked" : ""}`}>
+                <input
+                  type="checkbox"
+                  value={code}
+                  checked={checked}
+                  onChange={handleLangChange}
+                  disabled={loading}
+                />
+                <span>{label}</span>
+              </label>
+            );
+          })}
+        </div>
+        <div className="helper-text">{languages.length} selected</div>
+      </div>
+
+      {error && <div className="error-banner">{error}</div>}
+
+      <div className="actions">
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? "Processing…" : "Get Answer & Translations"}
+        </button>
+      </div>
     </form>
   );
 };

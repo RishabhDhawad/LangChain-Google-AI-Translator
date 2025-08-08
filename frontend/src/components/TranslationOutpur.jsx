@@ -2,18 +2,23 @@ const TranslationOutput = ({ result }) => {
   if (!result) return null;
 
   return (
-    <div>
-      <h2>Original Answer:</h2>
-      <p>{result.original}</p>
+    <div className="output">
+      <div>
+        <h2 className="block-title">Original Answer</h2>
+        <div className="original-answer">{result.original}</div>
+      </div>
 
-      <h2>Translations:</h2>
-      <ul>
-        {Object.entries(result.translations).map(([lang, text]) => (
-          <li key={lang}>
-            <strong>{lang.toUpperCase()}:</strong> {text}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <h2 className="block-title">Translations</h2>
+        <ul className="translations">
+          {Object.entries(result.translations).map(([lang, text]) => (
+            <li key={lang} className="translation-item">
+              <span className="lang-chip">{lang.toUpperCase()}</span>
+              <div>{text}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

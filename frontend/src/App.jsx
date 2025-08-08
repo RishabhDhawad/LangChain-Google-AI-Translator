@@ -7,10 +7,16 @@ function App() {
   const [result, setResult] = useState(null);
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "800px", margin: "auto" }}>
-      <h1>LangChain + Google AI Translator</h1>
-      <QueryForm onResult={setResult} />
-      <TranslationOutput result={result} />
+    <div className="app-container">
+      <div className="card">
+        <h1 className="app-title">LangChain + Google AI Translator</h1>
+        <p className="app-subtitle">Ask in any language, get multilingual answers.</p>
+        <QueryForm onResult={setResult} />
+      </div>
+
+      <div className="card" style={{ marginTop: "1rem" }}>
+        <TranslationOutput result={result} />
+      </div>
     </div>
   );
 }

@@ -1,59 +1,77 @@
-# Python virtual environments
+# === PYTHON BACKEND ===
+
+# Virtual environments
 venv/
 env/
 .venv/
+
+# Python cache and compiled files
 __pycache__/
 *.py[cod]
 *.pyo
+*.pyd
+*.so
 
-# VSCode / IDE settings
-.vscode/
-.idea/
+# FastAPI logs and temp files
+*.log
 
-# OS files
-.DS_Store
-Thumbs.db
-
-# Environment variable files (API keys, etc.)
+# Environment variables (API keys, DB secrets)
 .env
 .env.*
 
-# FastAPI logs / temp files
-*.log
-
-# Pytest / coverage
+# Pytest and test artifacts
 .cache/
-*.cover
-coverage.*
+.coverage
 htmlcov/
-pytest_cache/
+.pytest_cache/
 
-# Migrations (if using alembic)
-migrations/
+# Build artifacts
+build/
+dist/
+*.egg-info/
 
-# LangChain / OpenAI / Google AI Studio cache (if any)
-langchain.db
-*.jsonl  # if you're storing chains or runs
-
-# Jupyter notebook checkpoints
-.ipynb_checkpoints
-
-# Frontend build files (if using React/Vite)
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
-
-# Output / temp data
+# SQLite and temp DB files
 *.sqlite3
 *.db
 *.pkl
 *.joblib
 *.bak
 
-# Compiled C files
-*.so
+# LangChain or LLM artifacts (if stored)
+langchain.db
+*.jsonl
 
-# Build artifacts
-build/
-dist/
-*.egg-info/
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+
+# === FRONTEND (React/Vite) ===
+
+# Node dependencies
+frontend/node_modules/
+
+# Vite/React build output
+frontend/dist/
+frontend/.vite/
+
+# Local env files (for React)
+frontend/.env
+frontend/.env.*
+
+# Cache
+frontend/.cache/
+frontend/.parcel-cache/
+frontend/yarn-error.log
+frontend/npm-debug.log
+frontend/pnpm-lock.yaml
+
+
+# === IDE and OS ===
+
+# VSCode and JetBrains IDEs
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
