@@ -11,8 +11,8 @@ from langchain_core.prompts import ChatPromptTemplate
 load_dotenv()
 
 app = FastAPI(
-    # title="Basic Translation API",
-    # description="A simple API to translate text using LangChain and Gemini."
+    title="Basic Translation API",
+    description="A simple API to translate text using LangChain and Gemini."
 )
 
 app.mount("/static", StaticFiles(directory="static"), name="static")

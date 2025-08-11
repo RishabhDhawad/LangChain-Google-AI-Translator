@@ -75,3 +75,8 @@ frontend/pnpm-lock.yaml
 # System files
 .DS_Store
 Thumbs.db
+
+venv/
+__pycache__/
+.env
+*.pyc
